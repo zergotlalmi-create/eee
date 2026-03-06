@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    
+    <!-- SEO Meta Tags -->
+    <title>PDF Master | Free Online Document Scanner & Image to PDF Converter</title>
+    <meta name="description" content="Free online PDF scanner and converter. Convert images to PDF, scan documents with camera, OCR text extraction. 100% private, no upload, no registration.">
+    <meta name="keywords" content="PDF scanner, image to PDF, document scanner, OCR online, free PDF converter, JPG to PDF, scan to PDF">
+    <meta name="author" content="PDF Master">
+    
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="PDF Master - Free Online Document Scanner">
+    <meta property="og:description" content="Convert images to PDF with complete privacy. Camera scanner, OCR, compression - all free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pdfmaster.github.io">
+    <meta property="og:image" content="https://pdfmaster.github.io/images/og-image.jpg">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== AI-POWERED HEADER ===== */
+        .ai-title-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-title-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .ai-logo {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .ai-badge {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #2d3748;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .ai-main-title {
+            font-size: 52px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+            50% { text-shadow: 0 0 40px rgba(255,255,255,0.8); }
+        }
+
+        .typing-effect {
+            display: inline-block;
+            border-right: 3px solid white;
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .ai-description {
+            font-size: 20px;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+            background: rgba(255,255,255,0.1);
+            padding: 20px 30px;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .ai-features {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0 20px;
+        }
+
+        .ai-feature {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .ai-feature:nth-child(1) { animation-delay: 0.1s; }
+        .ai-feature:nth-child(2) { animation-delay: 0.3s; }
+        .ai-feature:nth-child(3) { animation-delay: 0.5s; }
+        .ai-feature:nth-child(4) { animation-delay: 0.7s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ai-feature:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .ai-feature i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        .ai-stats {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+            color: white;
+        }
+
+        .ai-stat {
+            text-align: center;
+        }
+
+        .ai-stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .ai-stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .light-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255,255,255,0.5), 
+                rgba(255,215,0,0.8), 
+                rgba(255,255,255,0.5), 
+                transparent
+            );
+            animation: wave 3s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* ===== TOOLS BAR ===== */
+        .tools-bar {
+            background: white;
+            padding: 20px 30px;
+            border-bottom: 1px solid #edf2f7;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tool-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f7fafc;
+            color: #2d3748;
+            border: 2px solid transparent;
+        }
+
+        .tool-btn i { font-size: 18px; }
+        .tool-btn:hover { background: #edf2f7; transform: translateY(-2px); }
+        .tool-btn.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content { padding: 30px; }
+
+        /* ===== CAMERA SECTION ===== */
+        .camera-section {
+            background: #1a202c;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        .camera-header {
+            background: #2d3748;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .camera-title { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+        .camera-status { background: #f56565; padding: 5px 15px; border-radius: 50px; font-size: 13px; display: flex; align-items: center; gap: 5px; }
+        .camera-status.active { background: #48bb78; }
+
+        .video-container {
+            position: relative;
+            background: #000;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #video, #canvas { width: 100%; max-height: 500px; object-fit: contain; }
+
+        .camera-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 3px solid #48bb78;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            display: none;
+        }
+
+        .camera-controls {
+            position: absolute;
+            bottom: 20px; left: 0; right: 0;
+            display: flex; justify-content: center; gap: 20px;
+            pointer-events: all;
+        }
+
+        .cam-btn {
+            width: 70px; height: 70px; border-radius: 50%;
+            border: none; background: white; color: #2d3748;
+            font-size: 28px; cursor: pointer; transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .cam-btn:hover { transform: scale(1.1); }
+        .cam-btn.capture { background: #48bb78; color: white; }
+        .cam-btn.capture:hover { background: #38a169; }
+        .cam-btn.close { background: #f56565; color: white; display: none; }
+
+        /* ===== GALLERY SECTION ===== */
+        .gallery-section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .gallery-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .gallery-title { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; color: #2d3748; }
+        .image-counter { background: #e2e8f0; padding: 5px 15px; border-radius: 50px; font-size: 14px; font-weight: 600; }
+
+        .clear-btn {
+            background: none; border: 2px solid #f56565; color: #f56565;
+            padding: 8px 20px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 5px;
+        }
+        .clear-btn:hover { background: #f56565; color: white; }
+
+        .images-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px; max-height: 300px; overflow-y: auto; padding: 10px;
+        }
+
+        .image-item {
+            position: relative; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s;
+            aspect-ratio: 3/4;
+        }
+        .image-item:hover { transform: scale(1.05); }
+        .image-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        .image-item .delete-btn {
+            position: absolute; top: 5px; right: 5px;
+            width: 30px; height: 30px; border-radius: 50%;
+            background: rgba(245, 101, 101, 0.9); border: none; color: white;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .image-item:hover .delete-btn { opacity: 1; }
+
+        /* ===== PROCESSING SECTION ===== */
+        .processing-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px; padding: 30px; color: white; text-align: center;
+        }
+
+        .processing-options {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px; margin: 25px 0;
+        }
+
+        .process-option {
+            background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px; padding: 20px; cursor: pointer; transition: all 0.3s;
+        }
+        .process-option:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-5px); border-color: white; }
+        .process-option i { font-size: 40px; margin-bottom: 10px; }
+        .process-option h3 { font-size: 18px; margin-bottom: 5px; }
+        .process-option p { font-size: 13px; opacity: 0.8; }
+        .process-option.selected { background: white; color: #667eea; border-color: white; }
+
+        .main-action-btn {
+            background: white; color: #667eea; border: none;
+            padding: 18px 40px; border-radius: 50px; font-size: 18px; font-weight: 700;
+            cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: inline-flex; align-items: center; gap: 10px; margin: 20px 0;
+        }
+        .main-action-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+        .main-action-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .progress-bar {
+            width: 100%; height: 10px; background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px; overflow: hidden; margin: 20px 0; display: none;
+        }
+        .progress-fill { height: 100%; background: white; width: 0%; transition: width 0.3s; }
+
+        /* ===== NOTIFICATION ===== */
+        .notification {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px);
+            background: white; color: #2d3748; padding: 15px 30px; border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 10px;
+            z-index: 1000; transition: transform 0.3s; font-weight: 600;
+        }
+        .notification.show { transform: translateX(-50%) translateY(0); }
+        .notification.success { border-left: 5px solid #48bb78; }
+        .notification.error { border-left: 5px solid #f56565; }
+        .notification.info { border-left: 5px solid #4299e1; }
+
+        /* ===== BLOG SECTION ===== */
+        .blog-section {
+            margin: 40px 30px; text-align: center;
+        }
+        .blog-section h2 { color: #2d3748; font-size: 24px; margin-bottom: 20px; }
+
+        .blog-card {
+            text-decoration: none; background: white; padding: 25px; border-radius: 15px;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); width: 300px; margin: 0 auto;
+            display: block; transition: transform 0.3s;
+        }
+        .blog-card:hover { transform: translateY(-5px); }
+        .blog-card i { font-size: 40px; color: #667eea; margin-bottom: 15px; }
+        .blog-card h3 { color: #2d3748; margin-bottom: 10px; }
+        .blog-card p { color: #718096; margin-bottom: 15px; }
+        .blog-card span { color: #667eea; font-weight: 600; }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #2d3748; color: white; padding: 20px 30px; text-align: center;
+        }
+        .footer-links {
+            display: flex; justify-content: center; gap: 30px; margin-bottom: 15px; flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #a0aec0; text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 5px;
+        }
+        .footer-links a:hover { color: white; }
+        .copyright { color: #718096; font-size: 14px; }
+
+        /* ===== LOADER ===== */
+        .loader {
+            display: inline-block; width: 30px; height: 30px;
+            border: 3px solid rgba(255,255,255,.3); border-radius: 50%;
+            border-top-color: white; animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .ai-main-title { font-size: 36px; }
+            .ai-description { font-size: 16px; padding: 15px 20px; }
+            .ai-feature { padding: 8px 15px; font-size: 14px; }
+            .ai-stats { gap: 15px; }
+            .ai-stat-number { font-size: 24px; }
+            .tools-bar { overflow-x: auto; justify-content: flex-start; }
+            .camera-controls { bottom: 10px; }
+            .cam-btn { width: 50px; height: 50px; font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- AI-POWERED HEADER -->
+        <div class="ai-title-container">
+            <div class="ai-logo">
+                <i class="fas fa-robot"></i>
+            </div>
+            
+            <div class="ai-badge">
+                <i class="fas fa-microchip"></i> AI-POWERED 2026
+            </div>
+            
+            <h1 class="ai-main-title">
+                <span class="typing-effect" id="typingTitle">PDF Master</span>
+            </h1>
+            
+            <div class="ai-description">
+                <i class="fas fa-quote-right" style="opacity: 0.5; margin-left: 10px;"></i>
+                The first PDF tool powered by <strong>Artificial Intelligence</strong> locally on your device
+                <br>
+                <span style="font-size: 16px; opacity: 0.8;">Instant processing · Complete privacy · Forever free</span>
+            </div>
+            
+            <div class="ai-features">
+                <div class="ai-feature"><i class="fas fa-brain"></i> Smart OCR</div>
+                <div class="ai-feature"><i class="fas fa-magic"></i> Image Enhancement</div>
+                <div class="ai-feature"><i class="fas fa-robot"></i> AI Assistant</div>
+                <div class="ai-feature"><i class="fas fa-chart-line"></i> Continuous Learning</div>
+            </div>
+            
+            <div class="ai-stats">
+                <div class="ai-stat">
+                    <span class="ai-stat-number">150K+</span>
+                    <span class="ai-stat-label">Active Users</span>
+                </div>
+                <div class="ai-stat">
+                    <span class="ai-stat-number">99.9%</span>
+                    <span class="ai-stat-label">OCR Accuracy</span>
+                </div>
+                <div class="ai-stat">
+                    <span class="ai-stat-number">2.5M</span>
+                    <span class="ai-stat-label">Documents</span>
+                </div>
+            </div>
+            
+            <div class="light-wave"></div>
+        </div>
+        
+        <!-- TOOLS BAR -->
+        <div class="tools-bar">
+            <button class="tool-btn active"><i class="fas fa-camera"></i> Camera</button>
+            <button class="tool-btn"><i class="fas fa-object-group"></i> Merge PDF</button>
+            <button class="tool-btn"><i class="fas fa-cut"></i> Split</button>
+            <button class="tool-btn"><i class="fas fa-compress-alt"></i> Compress</button>
+            <button class="tool-btn"><i class="fas fa-font"></i> OCR</button>
+            <button class="tool-btn"><i class="fas fa-copyright"></i> Watermark</button>
+        </div>
+        
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- CAMERA SECTION -->
+            <div class="camera-section">
+                <div class="camera-header">
+                    <div class="camera-title">
+                        <i class="fas fa-camera"></i> Document Camera
+                    </div>
+                    <div class="camera-status" id="cameraStatus">
+                        <i class="fas fa-circle"></i> Camera Offline
+                    </div>
+                </div>
+                
+                <div class="video-container">
+                    <video id="video" autoplay playsinline></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                    <div class="camera-overlay" id="cameraOverlay"></div>
+                    
+                    <div class="camera-controls">
+                        <button class="cam-btn" id="startCameraBtn" title="Start Camera">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="cam-btn capture" id="captureBtn" disabled title="Capture Image">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <button class="cam-btn close" id="stopCameraBtn" title="Stop Camera">
+                            <i class="fas fa-power-off"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GALLERY SECTION -->
+            <div class="gallery-section" id="gallerySection">
+                <div class="gallery-header">
+                    <div class="gallery-title">
+                        <i class="fas fa-images"></i> Captured Images
+                        <span class="image-counter" id="imageCounter">0</span>
+                    </div>
+                    <button class="clear-btn" id="clearBtn">
+                        <i class="fas fa-trash-alt"></i> Clear All
+                    </button>
+                </div>
+                <div class="images-grid" id="imagesGrid"></div>
+            </div>
+            
+            <!-- PROCESSING SECTION -->
+            <div class="processing-section">
+                <h2><i class="fas fa-magic"></i> Choose Your Process</h2>
+                
+                <div class="processing-options">
+                    <div class="process-option selected" data-process="pdf">
+                        <i class="fas fa-file-pdf"></i>
+                        <h3>Standard PDF</h3>
+                        <p>Convert images to PDF directly</p>
+                    </div>
+                    <div class="process-option" data-process="ocr">
+                        <i class="fas fa-search"></i>
+                        <h3>Searchable PDF</h3>
+                        <p>Extract text with AI OCR</p>
+                    </div>
+                    <div class="process-option" data-process="compress">
+                        <i class="fas fa-compress-alt"></i>
+                        <h3>Compressed PDF</h3>
+                        <p>Smaller size, same quality</p>
+                    </div>
+                    <div class="process-option" data-process="enhance">
+                        <i class="fas fa-magic"></i>
+                        <h3>Enhanced PDF</h3>
+                        <p>AI image improvement</p>
+                    </div>
+                </div>
+                
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                
+                <button class="main-action-btn" id="processBtn" disabled>
+                    <i class="fas fa-cog"></i> <span id="processBtnText">Create PDF</span>
+                </button>
+                
+                <p style="opacity: 0.8; font-size: 14px;">
+                    <i class="fas fa-shield-alt"></i> 100% local processing - your files never leave your device
+                </p>
+            </div>
+        </div>
+        
+        <!-- BLOG SECTION -->
+        <div class="blog-section">
+            <h2><i class="fas fa-blog"></i> Latest Articles</h2>
+            <a href="blog/image-to-pdf-guide.html" class="blog-card">
+                <i class="fas fa-file-image"></i>
+                <h3>Image to PDF Converter Guide</h3>
+                <p>Learn how to convert images to PDF professionally with AI</p>
+                <span>Read more →</span>
+            </a>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-home"></i> Home</a>
+                <a href="#"><i class="fas fa-question-circle"></i> How to Use</a>
+                <a href="#"><i class="fas fa-file-contract"></i> Privacy Policy</a>
+                <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="#"><i class="fas fa-newspaper"></i> Blog</a>
+            </div>
+            <div class="copyright">
+                © 2024-2026 PDF Master. All rights reserved. Made with ❤️ for document privacy.
+            </div>
+        </div>
+    </div>
+    
+    <!-- NOTIFICATION -->
+    <div id="notification" class="notification">
+        <i class="fas" id="notificationIcon"></i>
+        <span id="notificationMessage"></span>
+    </div>
+    
+    <!-- LIBRARIES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    
+    <script>
+        // ===== PDF MASTER APPLICATION =====
+        class PDFMaster {
+            constructor() {
+                this.capturedImages = [];
+                this.stream = null;
+                this.currentProcess = 'pdf';
+                
+                // Get elements
+                this.video = document.getElementById('video');
+                this.canvas = document.getElementById('canvas');
+                this.startBtn = document.getElementById('startCameraBtn');
+                this.captureBtn = document.getElementById('captureBtn');
+                this.stopBtn = document.getElementById('stopCameraBtn');
+                this.cameraStatus = document.getElementById('cameraStatus');
+                this.cameraOverlay = document.getElementById('cameraOverlay');
+                this.gallerySection = document.getElementById('gallerySection');
+                this.imagesGrid = document.getElementById('imagesGrid');
+                this.imageCounter = document.getElementById('imageCounter');
+                this.clearBtn = document.getElementById('clearBtn');
+                this.processBtn = document.getElementById('processBtn');
+                this.processBtnText = document.getElementById('processBtnText');
+                this.progressBar = document.getElementById('progressBar');
+                this.progressFill = document.getElementById('progressFill');
+                this.processOptions = document.querySelectorAll('.process-option');
+                this.notification = document.getElementById('notification');
+                this.notificationIcon = document.getElementById('notificationIcon');
+                this.notificationMessage = document.getElementById('notificationMessage');
+                
+                this.initEventListeners();
+                this.initTypingEffect();
+            }
+            
+            initEventListeners() {
+                this.startBtn.addEventListener('click', () => this.startCamera());
+                this.captureBtn.addEventListener('click', () => this.captureImage());
+                this.stopBtn.addEventListener('click', () => this.stopCamera());
+                this.clearBtn.addEventListener('click', () => this.clearAllImages());
+                this.processBtn.addEventListener('click', () => this.processImages());
+                
+                this.processOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        this.processOptions.forEach(opt => opt.classList.remove('selected'));
+                        option.classList.add('selected');
+                        this.currentProcess = option.dataset.process;
+                        this.updateProcessButton();
+                    });
+                });
+            }
+            
+            initTypingEffect() {
+                const phrases = ['PDF Master', 'AI Scanner', 'Smart OCR', 'Free Converter', '100% Private'];
+                let currentPhrase = 0;
+                let currentChar = 0;
+                let isDeleting = false;
+                const typingElement = document.getElementById('typingTitle');
+                
+                const type = () => {
+                    const currentText = phrases[currentPhrase];
+                    
+                    if (isDeleting) {
+                        typingElement.textContent = currentText.substring(0, currentChar - 1);
+                        currentChar--;
+                    } else {
+                        typingElement.textContent = currentText.substring(0, currentChar + 1);
+                        currentChar++;
+                    }
+                    
+                    if (!isDeleting && currentChar === currentText.length) {
+                        isDeleting = true;
+                        setTimeout(type, 2000);
+                    } else if (isDeleting && currentChar === 0) {
+                        isDeleting = false;
+                        currentPhrase = (currentPhrase + 1) % phrases.length;
+                        setTimeout(type, 500);
+                    } else {
+                        setTimeout(type, isDeleting ? 50 : 100);
+                    }
+                };
+                
+                setTimeout(type, 1000);
+            }
+            
+            showNotification(message, type) {
+                this.notification.classList.add('show', type);
+                this.notificationMessage.textContent = message;
+                
+                setTimeout(() => {
+                    this.notification.classList.remove('show', type);
+                }, 3000);
+            }
+            
+            async startCamera() {
+                try {
+                    this.stream = await navigator.mediaDevices.getUserMedia({ 
+                        video: { facingMode: 'environment' } 
+                    });
+                    this.video.srcObject = this.stream;
+                    
+                    this.startBtn.style.display = 'none';
+                    this.stopBtn.style.display = 'flex';
+                    this.captureBtn.disabled = false;
+                    this.cameraStatus.innerHTML = '<i class="fas fa-circle"></i> Camera Active';
+                    this.cameraStatus.classList.add('active');
+                    this.cameraOverlay.style.display = 'block';
+                    
+                    this.showNotification('Camera is ready', 'success');
+                } catch (error) {
+                    this.showNotification('Camera error: ' + error.message, 'error');
+                }
+            }
+            
+            stopCamera() {
+                if (this.stream) {
+                    this.stream.getTracks().forEach(track => track.stop());
+                    this.stream = null;
+                }
+                
+                this.video.srcObject = null;
+                this.startBtn.style.display = 'flex';
+                this.stopBtn.style.display = 'none';
+                this.captureBtn.disabled = true;
+                this.cameraStatus.innerHTML = '<i class="fas fa-circle"></i> Camera Offline';
+                this.cameraStatus.classList.remove('active');
+                this.cameraOverlay.style.display = 'none';
+            }
+            
+            captureImage() {
+                this.canvas.width = this.video.videoWidth || 640;
+                this.canvas.height = this.video.videoHeight || 480;
+                
+                const ctx = this.canvas.getContext('2d');
+                ctx.drawImage(this.video, 0, 0, this.canvas.width, this.canvas.height);
+                
+                // Basic enhancement
+                this.enhanceImage(ctx);
+                
+                const imageData = this.canvas.toDataURL('image/jpeg', 0.9);
+                this.capturedImages.push({
+                    id: Date.now(),
+                    data: imageData
+                });
+                
+                this.updateGallery();
+                this.processBtn.disabled = false;
+                this.showNotification('Image captured', 'success');
+            }
+            
+            enhanceImage(ctx) {
+                const imageData = ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+                const data = imageData.data;
+                
+                for (
